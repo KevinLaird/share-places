@@ -1,9 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import styles from './SideDrawer.module.css';
 
 const SideDrawer = (props) => {
-  return <aside className={styles.sideDrawer}>{props.children}</aside>;
+  const content = <aside className={styles.sideDrawer}>{props.children}</aside>;
+  return ReactDOM.createPortal(content, document.getElementById('drawer-hook'));
 };
 
 export default SideDrawer;
