@@ -10,7 +10,6 @@ const NavLinks = (props) => {
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? styles.active : '')}
-          exact
         >
           All Users
         </NavLink>
