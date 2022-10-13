@@ -11,20 +11,20 @@ import styles from './MainNavigation.module.css';
 const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
-  const toggleDrawer = () => {
+  const toggleDrawerHandler = () => {
     setDrawerIsOpen(!drawerIsOpen);
   };
 
   return (
     <>
-      {drawerIsOpen && <Backdrop onClick={toggleDrawer} />}
-      <SideDrawer show={drawerIsOpen}>
+      {drawerIsOpen && <Backdrop onClick={toggleDrawerHandler} />}
+      <SideDrawer show={drawerIsOpen} onClick={toggleDrawerHandler}>
         <nav className={styles.drawerNav}>
           <NavLinks />
         </nav>
       </SideDrawer>
       <MainHeader>
-        <button className={styles.menuBtn} onClick={toggleDrawer}>
+        <button className={styles.menuBtn} onClick={toggleDrawerHandler}>
           <span />
           <span />
           <span />

@@ -13,7 +13,9 @@ const SideDrawer = (props) => {
       mountOnEnter
       unmountOnExit
     >
-      <aside className={styles.sideDrawer}>{props.children}</aside>
+      <aside className={styles.sideDrawer} onClick={props.onClick}>
+        {props.children}
+      </aside>
     </CSSTransition>
   );
   return ReactDOM.createPortal(content, document.getElementById('drawer-hook'));
