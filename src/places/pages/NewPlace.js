@@ -7,6 +7,7 @@ const NewPlace = () => {
   return (
     <form className={styles.placeForm}>
       <Input element="input" type="text" label="Title" validators={[]} />
+      hello world
     </form>
   );
 };
