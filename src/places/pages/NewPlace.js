@@ -6,7 +6,13 @@ import styles from './NewPlace.module.css';
 const NewPlace = () => {
   return (
     <form className={styles.placeForm}>
-      <Input element="input" type="text" label="Title" validators={[]} />
+      <Input
+        element="input"
+        type="text"
+        label="Title"
+        validators={[]}
+        errorText="Please enter a valid title."
+      />
     </form>
   );
 };
