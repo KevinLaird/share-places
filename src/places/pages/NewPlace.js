@@ -8,8 +8,6 @@ import {
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 
-import formStyles from './PlaceForm.module.css';
-
 const NewPlace = () => {
   const [formState, inputHandler] = useForm(
     {
@@ -35,7 +33,7 @@ const NewPlace = () => {
   };
 
   return (
-    <form className={formStyles.placeForm} onSubmit={placeSubmitHandler}>
+    <form className="form" onSubmit={placeSubmitHandler}>
       <Input
         id="title"
         element="input"

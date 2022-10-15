@@ -10,8 +10,6 @@ import {
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 
-import formStyles from './PlaceForm.module.css';
-
 const DUMMY_PLACES = [
   {
     id: 'p1',
@@ -101,7 +99,7 @@ const UpdatePlace = (props) => {
   }
 
   return (
-    <form className={formStyles.placeForm} onSubmit={placeUpdateSubmitHandler}>
+    <form className="form" onSubmit={placeUpdateSubmitHandler}>
       <Input
         id="title"
         element="input"
