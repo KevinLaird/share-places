@@ -7,7 +7,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators';
 
-import styles from './NewPlace.module.css';
+import formStyles from './PlaceForm.module.css';
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -47,6 +47,10 @@ const NewPlace = () => {
         value: '',
         isValid: false,
       },
+      address: {
+        value: '',
+        isValid: false,
+      },
     },
     isValid: false,
   });
@@ -66,7 +70,7 @@ const NewPlace = () => {
   };
 
   return (
-    <form className={styles.placeForm} onSubmit={placeSubmitHandler}>
+    <form className={formStyles.placeForm} onSubmit={placeSubmitHandler}>
       <Input
         id="title"
         element="input"
