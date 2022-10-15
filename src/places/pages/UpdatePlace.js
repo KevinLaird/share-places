@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Input from '../../shared/components/FormElements/Input';
@@ -41,12 +41,27 @@ const DUMMY_PLACES = [
 ];
 
 const UpdatePlace = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
   const placeId = useParams().placeId;
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: '',
+        isValid: false,
+      },
+      description: {
+        value: '',
+        isValid: false,
+      },
+    },
+    false,
+  );
 
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);
 
-  const [formState, inputHandler] = useForm(
-    {
+  useEffect(() => {
+    setFormData({
       title: {
         value: identifiedPlace.title,
         isValid: true,
@@ -55,9 +70,9 @@ const UpdatePlace = (props) => {
         value: identifiedPlace.description,
         isValid: true,
       },
-    },
-    true,
-  );
+    });
+    setIsLoading(false);
+  }, [identifiedPlace, setFormData]);
 
   const placeUpdateSubmitHandler = (event) => {
     event.preventDefault();
@@ -71,6 +86,15 @@ const UpdatePlace = (props) => {
       </div>
     );
   }
+
+  if (isLoading) {
+    return (
+      <div className="center">
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
   return (
     <form className={formStyles.placeForm} onSubmit={placeUpdateSubmitHandler}>
       <Input
