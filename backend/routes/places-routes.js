@@ -22,7 +22,13 @@ router.get('/:pid', (req, res, next) => {
   const placeId = req.params.pid;
   const placeJson = DUMMY_PLACES.find((place) => place.id === placeId);
 
-  res.json({ placeJson });
+  if (!placeJson) {
+    const error = new Error('Could not find a place for the provided id.');
+    error.code = 404;
+    return next(error);
+  }
+
+  res.json(placeJson);
 });
 
 router.get('/user/:uid', (req, res, next) => {
@@ -32,7 +38,13 @@ router.get('/user/:uid', (req, res, next) => {
     return p.creator === userId;
   });
 
-  res.json({ user });
+  if (!user) {
+    const error = new Error('Could not find a user for the provided id.');
+    error.code = 404;
+    return next(error);
+  }
+
+  res.json(user);
 });
 
 module.exports = router;
