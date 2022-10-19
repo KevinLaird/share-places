@@ -74,7 +74,9 @@ const getPlacesByUserId = async (req, res, next) => {
   }
 
   if (!places || places.length === 0) {
-    return next(new HttpError('Could not find places by the user id.', 404));
+    return next(
+      new HttpError('Could not find any places by the user id.', 404),
+    );
   }
 
   res.json({
@@ -160,21 +162,10 @@ const updatePlace = async (req, res, next) => {
 const deletePlace = async (req, res, next) => {
   const placeId = req.params.pid;
 
-  let place;
   try {
-    place = await Place.findById(placeId);
+    await Place.deleteOne({ id: placeId });
   } catch (err) {
     const error = new HttpError(
-      'Something went wrong. We could not find the place.',
-      500,
-    );
-    return next(error);
-  }
-
-  try {
-    await place.delete();
-  } catch (err) {
-    const error = HttpError(
       'Something went wrong. We could not delete the place',
       500,
     );
