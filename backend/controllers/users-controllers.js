@@ -7,7 +7,7 @@ const User = require('../models/user');
 const getUsers = async (req, res, next) => {
   let allUsers;
   try {
-    allUsers = await User.find({});
+    allUsers = await User.find({}, '-password');
   } catch (err) {
     const error = new HttpError(
       'Could not find users. Please try again later.',
@@ -21,7 +21,7 @@ const getUsers = async (req, res, next) => {
     next(error);
   }
 
-  res.json({ users: allUsers });
+  res.json({ users: allUsers.map((user) => user.toObject({ getters: true })) });
 };
 
 const signup = async (req, res, next) => {
@@ -53,8 +53,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: `https://media-exp1.licdn.com/dms/image/C5603AQH5LOqukEdoAQ/profile-displayphoto-shrink_200_200/
-      0/1604510146335?e=1671667200&v=beta&t=vx_1lax77mIo6QWxXXLtrt6NqaaV7lADQaFfreBLFq4`,
+    image: `https://media-exp1.licdn.com/dms/image/C5603AQH5LOqukEdoAQ/profile-displayphoto-shrink_200_200/0/1604510146335?e=1671667200&v=beta&t=vx_1lax77mIo6QWxXXLtrt6NqaaV7lADQaFfreBLFq4`,
     password,
     places,
   });
