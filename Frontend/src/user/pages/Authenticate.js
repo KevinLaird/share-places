@@ -130,7 +130,7 @@ const Authenticate = () => {
             type="password"
             label="Password"
             validators={[VALIDATOR_MINLENGTH(8)]}
-            errorText="Please enter a password (min. 8)"
+            errorText="A strong password will contain a minimum length of 8 characters, 1 uppercase, 1 number, and 1 symbol."
             onInput={inputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>
