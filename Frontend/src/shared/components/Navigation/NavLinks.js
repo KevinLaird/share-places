@@ -21,7 +21,7 @@ const NavLinks = (props) => {
         <>
           <li>
             <NavLink
-              to="/u1/places"
+              to={`/${auth.userId}/places`}
               className={({ isActive }) => (isActive ? styles.active : '')}
             >
               My Places
