@@ -187,16 +187,6 @@ const deletePlace = async (req, res, next) => {
     return next(error);
   }
 
-  // try {
-  //   await Place.deleteOne({ id: placeId });
-  // } catch (err) {
-  //   const error = new HttpError(
-  //     'Something went wrong. We could not delete the place',
-  //     500,
-  //   );
-  //   return next(error);
-  // }
-
   res.status(200).json({ message: 'Deleted place.' });
 };
 
