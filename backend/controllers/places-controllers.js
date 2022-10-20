@@ -81,7 +81,7 @@ const createPlace = async (req, res, next) => {
     address,
     location: coordinates,
     image:
-      'https://static.wikia.nocookie.net/diablo/images/4/4a/Tristram_D3.jpg/revision/latest?cb=20130723124545',
+      'https://static.wikia.nocookie.net/diablo/images/4/4a/Tristram_D3.jpg/',
     creator,
   });
 
@@ -175,7 +175,7 @@ const deletePlace = async (req, res, next) => {
   try {
     const session = await mongoose.startSession();
     session.startTransaction();
-    place.deleteOne({ session: session });
+    place.remove({ session: session });
     place.creator.places.pull(place);
     await place.creator.save({ session: session });
     await session.commitTransaction();
