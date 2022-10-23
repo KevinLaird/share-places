@@ -1,10 +1,6 @@
 # share-places
 
 Uses MERN Stack
-- MongoDB
-- Express.js
-- React.js
-- Node.js
 
 Features: 
 - Create user
