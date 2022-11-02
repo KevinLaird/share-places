@@ -80,8 +80,7 @@ const createPlace = async (req, res, next) => {
     description,
     address,
     location: coordinates,
-    image:
-      'https://static.wikia.nocookie.net/diablo/images/4/4a/Tristram_D3.jpg/',
+    image: req.file.path,
     creator,
   });
 
