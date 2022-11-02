@@ -16,6 +16,7 @@ import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 
 import styles from './Authenticate.module.css';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
 
 const Authenticate = () => {
   const auth = useContext(AuthContext);
@@ -78,6 +79,7 @@ const Authenticate = () => {
         {
           ...formState.inputs,
           name: undefined,
+          image: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid,
       );
@@ -87,6 +89,10 @@ const Authenticate = () => {
           ...formState.inputs,
           name: {
             value: '',
+            isValid: false,
+          },
+          image: {
+            value: null,
             isValid: false,
           },
         },
@@ -114,6 +120,9 @@ const Authenticate = () => {
               errorText="Please enter a name"
               onInput={inputHandler}
             />
+          )}
+          {!isLoginMode && (
+            <ImageUpload id="image" center onInput={inputHandler} />
           )}
           <Input
             id="email"
