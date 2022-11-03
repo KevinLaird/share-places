@@ -54,7 +54,7 @@ const Authenticate = () => {
           }),
           { 'Content-Type': 'application/json' },
         );
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
       try {
@@ -68,7 +68,7 @@ const Authenticate = () => {
           'POST',
           formData,
         );
-        auth.login(responseData.user.id);
+        auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     }
   };
