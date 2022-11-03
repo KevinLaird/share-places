@@ -52,9 +52,14 @@ const NewPlace = () => {
       formData.append('image', image.value);
       formData.append('description', description.value);
       formData.append('address', address.value);
-      await sendRequest('http://localhost:5000/api/places', 'POST', formData, {
-        Authorization: 'Bearer ' + auth.token,
-      });
+      await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/places`,
+        'POST',
+        formData,
+        {
+          Authorization: 'Bearer ' + auth.token,
+        },
+      );
       navigate('/');
     } catch (err) {}
   };
